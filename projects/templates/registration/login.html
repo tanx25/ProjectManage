@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<h2>Login</h2>
+
+
+
+<form method="post">
+    {% csrf_token %}
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" id="id_username" required>
+    <br>
+
+    <label for="id_password">Password:</label>
+    <input type="password" name="password" id="id_password" required>
+    <br>
+
+    <button type="submit">Login</button>
+</form>
+<a href="{% url 'password_reset' %}">Forgot password?</a>
+<br>
+<a href="{% url 'register' %}">Register</a>
+
+{% if messages %}
+    <ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</body>
+</html>

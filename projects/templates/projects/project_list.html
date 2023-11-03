@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Management</title>
+</head>
+<body>
+<div style="text-align: right;">
+    <a href="{% url 'user_management' %}">User Management</a>
+</div>
+<div style="text-align: right;">
+    <a href="{% url 'login' %}">Log out</a>
+</div>
+
+<h1>Project List</h1>
+
+{% for project in projects %}
+    <div>
+        <h2>{{ project.name }}</h2>
+        <p>{{ project.description }}</p>
+        <p>Status: {{ project.status }}</p>
+        <a href="{% url 'delete_project' project.id %}">Delete Project</a>
+
+
+        <h4>Steps:</h4>
+        <ul>
+            {% for step in project.steps.all %}
+                <li>
+                    {{ step.name }} - Status: {{ step.status }}
+                    <form method="post" action="{% url 'edit_step_status' step.id %}">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="Not Started" {% if step.status == "Not Started" %} selected {% endif %}>Not Started</option>
+                            <option value="In Progress" {% if step.status == "In Progress" %} selected {% endif %}>In Progress</option>
+                            <option value="Completed" {% if step.status == "Completed" %} selected {% endif %}>Completed</option>
+                        </select>
+                        <button type="submit">Update Step Status</button>
+                    </form>
+                    <a href="{% url 'delete_step' step.id %}">Delete Step</a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <form method="post" action="{% url 'add_step' project.id %}">
+            {% csrf_token %}
+            <label for="step_name">Add Step:</label><br>
+            <label for="step_name">Name:</label>
+            <input type="text" name="step_name" required>
+            <br>
+            <label for="step_status">Status:</label>
+            <select name="step_status">
+                <option value="Not Started">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Completed">Completed</option>
+            </select>
+            <br>
+        <button type="submit">Add Step</button>
+        </form>
+    </div>
+{% endfor %}
+
+<h2>Add New Project</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add</button>
+</form>
+
+</body>
+</html>
