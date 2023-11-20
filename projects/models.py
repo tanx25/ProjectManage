@@ -1,7 +1,12 @@
 #from django.contrib.auth.base_user import AbstractBaseUser
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 #from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import User
+from django.conf import settings
+from django.db import models
+
 
 
 
@@ -15,6 +20,8 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='Not Started')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='projects', null=True)
+
 
     def __str__(self):
         return self.name

@@ -36,17 +36,20 @@ def login_view(request):
 
     return render(request, 'registration/login.html', context)
 
-
+@login_required
 def project_list(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
-            form.save()
+            project = form.save(commit=False)
+            project.user = request.user
+            project.save()
             return redirect('project_list')
     else:
         form = ProjectForm()
-    projects = Project.objects.all()
-    incomplete_projects = Project.objects.filter(status__in=["Not Started", "Incompleted"])
+    projects = Project.objects.filter(user=request.user)
+    #projects = Project.objects.all()
+    incomplete_projects = Project.objects.filter(user=request.user, status__in=["Not Started", "Incompleted"])
     return render(request, 'projects/project_list.html', {'projects': projects, 'form': form, 'incomplete_projects': incomplete_projects})
 
 def add_step(request, project_id):
@@ -62,7 +65,7 @@ def add_step(request, project_id):
 
 
 def delete_project(request, pk):
-    project = Project.objects.get(pk=pk)
+    project = get_object_or_404(Project, pk=pk, user=request.user)
     project.delete()
     return redirect('project_list')
 def delete_step(request, step_id):
@@ -94,16 +97,7 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
-def register(request):
-    if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('login')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'registration/register.html', {'form': form})
+
 def edit_step_status(request, step_id):
     step = get_object_or_404(Step, id=step_id)
     if request.method == "POST":
