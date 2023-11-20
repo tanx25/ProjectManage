@@ -1,7 +1,9 @@
+from datetime import datetime
+
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
-from .models import Project, CustomUser
+from .models import Project, CustomUser,Step
 from .forms import ProjectForm, CustomUserForm
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomUserCreationForm
@@ -43,11 +45,9 @@ def project_list(request):
             return redirect('project_list')
     else:
         form = ProjectForm()
-
     projects = Project.objects.all()
-    return render(request, 'projects/project_list.html', {'projects': projects, 'form': form})
-
-from .models import Step
+    incomplete_projects = Project.objects.filter(status__in=["Not Started", "Incompleted"])
+    return render(request, 'projects/project_list.html', {'projects': projects, 'form': form, 'incomplete_projects': incomplete_projects})
 
 def add_step(request, project_id):
     project = get_object_or_404(Project, id=project_id)

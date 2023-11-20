@@ -2,14 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>SEED-Register</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .register-container {
+            text-align: center;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 4px;
+            padding: 40px 20px;
+            width: 480px;
+            margin: 5% auto;
+        }
+        .register-form h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+        .register-form input, .register-form select, .register-form textarea {
+            width: calc(100% - 40px);
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .register-form button {
+            width: calc(100% - 40px);
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .register-form button:hover {
+            background-color: #555;
+        }
+    </style>
 </head>
 <body>
-<h2>Register</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+    <div class="register-container">
+        <div class="register-form">
+            <h2>Register</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
