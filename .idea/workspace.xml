@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding todo list and time counting , united styles">
+    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding project_list &amp; views, right now the user can only check the proejects of their own">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManage/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/migrations/0001_initial.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/views.py" afterDir="false" />
     </list>
@@ -119,7 +122,7 @@
       <workItem from="1699933585177" duration="10395000" />
       <workItem from="1700431843881" duration="528000" />
       <workItem from="1700460467649" duration="4248000" />
-      <workItem from="1700501160067" duration="579000" />
+      <workItem from="1700501160067" duration="7041000" />
     </task>
     <task id="LOCAL-00001" summary="Adding todo list and time counting , united styles">
       <option name="closed" value="true" />
@@ -129,7 +132,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700498865869</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Adding project_list &amp; views, right now the user can only check the proejects of their own">
+      <option name="closed" value="true" />
+      <created>1700501848588</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1700501848588</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -148,6 +159,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding todo list and time counting , united styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding todo list and time counting , united styles" />
+    <MESSAGE value="Adding project_list &amp; views, right now the user can only check the proejects of their own" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding project_list &amp; views, right now the user can only check the proejects of their own" />
   </component>
 </project>

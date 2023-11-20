@@ -6,6 +6,8 @@ from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import User
 from django.conf import settings
 from django.db import models
+from django.contrib.auth import get_user_model
+
 
 
 
@@ -20,7 +22,9 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='Not Started')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='projects', null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+
 
 
     def __str__(self):

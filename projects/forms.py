@@ -1,4 +1,6 @@
 from django import forms
+from django.contrib.auth import get_user_model
+
 from .models import Project, Step, CustomUser
 from django.contrib.auth.forms import UserCreationForm
 
@@ -20,8 +22,9 @@ class CustomUserCreationForm(UserCreationForm):
     notes = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
 
     class Meta:
-        model = CustomUser
-        fields = ('username', 'email', 'address', 'gender', 'study_id', 'condition', 'notes')
+        model = get_user_model()
+        #model = CustomUser
+        fields = UserCreationForm.Meta.fields + ('email', 'address', 'gender', 'study_id', 'condition', 'notes')
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
