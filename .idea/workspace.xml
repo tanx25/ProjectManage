@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Finish admin setting, now can add course and video to each user">
+    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding a week bar">
+      <change afterPath="$PROJECT_DIR$/static/css/login.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/css/user_management.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManage/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectManage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/templates/projects/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/projects/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/registration/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/user_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/user_management.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +128,8 @@
       <workItem from="1699933585177" duration="10395000" />
       <workItem from="1700431843881" duration="528000" />
       <workItem from="1700460467649" duration="4248000" />
-      <workItem from="1700501160067" duration="12650000" />
+      <workItem from="1700501160067" duration="15115000" />
+      <workItem from="1700537771582" duration="3464000" />
     </task>
     <task id="LOCAL-00001" summary="Adding todo list and time counting , united styles">
       <option name="closed" value="true" />
@@ -153,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700520368297</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Adding a week bar">
+      <option name="closed" value="true" />
+      <created>1700525819079</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700525819079</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,6 +193,7 @@
     <MESSAGE value="Adding project_list &amp; views, right now the user can only check the proejects of their own" />
     <MESSAGE value="Finish the Foreign table setting" />
     <MESSAGE value="Finish admin setting, now can add course and video to each user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finish admin setting, now can add course and video to each user" />
+    <MESSAGE value="Adding a week bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding a week bar" />
   </component>
 </project>

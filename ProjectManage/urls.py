@@ -17,6 +17,9 @@ from django.contrib import admin
 from projects import views
 from projects.views import project_list, delete_project, register, add_step, edit_step_status, edit_project_status
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 
 
@@ -35,4 +38,7 @@ urlpatterns = [
     path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
 
 
-]
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+

@@ -18,9 +18,8 @@ class Project(models.Model):
         ('Incompleted', 'Incompleted'),
         ('Completed', 'Completed'),
     )
-
     name = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(max_length=100)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='Not Started')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
