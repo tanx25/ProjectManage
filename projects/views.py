@@ -138,3 +138,4 @@ def delete_user(request, user_id):
     return redirect('user_management')
 
 
+
