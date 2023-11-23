@@ -41,6 +41,7 @@ def project_list(request):
         if form.is_valid():
             project = form.save(commit=False)
             project.user = request.user
+            project.week = form.cleaned_data['week']
             project.save()
             return redirect('project_list')
     else:
@@ -48,7 +49,7 @@ def project_list(request):
     projects = Project.objects.filter(user=request.user)
     #projects = Project.objects.all()
     incomplete_projects = Project.objects.filter(user=request.user, status__in=["Not Started", "Incompleted"])
-    return render(request, 'projects/project_list.html', {'projects': projects, 'form': form, 'incomplete_projects': incomplete_projects})
+    return render(request, 'projects/project_list.html', {'projects': projects, 'form': form, 'incomplete_projects': incomplete_projects, 'weeks': range(1, 11)})
 
 def add_step(request, project_id):
     project = get_object_or_404(Project, id=project_id)
@@ -128,6 +129,20 @@ def user_management(request):
     }
 
     return render(request, 'user_management.html', context)
+@login_required
+def project_management(request):
+    if request.method == 'POST':
+        form = ProjectForm(request.POST)
+        if form.is_valid():
+            project = form.save(commit=False)
+            project.user = request.user
+            form.save()
+            return redirect('project_management')
+    else:
+        form = ProjectForm()
+
+    projects = Project.objects.all()
+    return render(request, 'project_management.html', {'form': form, 'projects': projects})
 
 
 def delete_user(request, user_id):

@@ -22,6 +22,7 @@ class Project(models.Model):
     description = models.TextField(max_length=100)
     status = models.CharField(max_length=12, choices=STATUS_CHOICES, default='Not Started')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    week = models.IntegerField(choices=[(i, f"Week {i}") for i in range(1, 11)], null=True)
 
 
 

@@ -5,13 +5,15 @@
     <title>SEED-User Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/user_management.css' %}">
+    <link rel="stylesheet" href="{% static 'css/management.css' %}">
 </head>
 <body>
 <div class="header-links">
-    <a href="{% url 'project_list' %}" class="btn btn-secondary btn-sm">Project Management</a>
+    <a href="{% url 'project_list' %}" class="btn btn-secondary btn-sm">Project</a>
+    <a href="{% url 'project_management' %}" class="btn btn-secondary btn-sm">Project Management</a>
     <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Log out</a>
 </div>
+
 <div class="container">
 <h1>User Management</h1>
 <form method="get" class="form-group">
@@ -58,6 +60,8 @@
         <button type="submit" class="btn btn-info">Add</button>
     </form>
 </div>
+
+
 
 </body>
 </html>

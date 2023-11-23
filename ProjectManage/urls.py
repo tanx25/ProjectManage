@@ -26,6 +26,8 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', project_list, name='project_list'),
+    path('project_management/', views.project_management, name='project_management'),
+
     path('add_step/<int:project_id>/', add_step, name='add_step'),
     path('delete/<int:pk>/', delete_project, name='delete_project'),
     path('edit_step_status/<int:step_id>/', edit_step_status, name='edit_step_status'),
