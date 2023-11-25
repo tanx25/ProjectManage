@@ -11,9 +11,18 @@
     <link rel="stylesheet" href="{% static 'css/project_list.css' %}">
 
 </head>
+
 <body>
+
 <div class="top_navi">
-    <div class="top_left">
+    <div class="logo-container">
+        <a href="{% url 'project_list' %}">
+            <img src="{% static 'image/logo.png' %}" alt="Weill Cornell Medicine Logo" height="70" /> <!-- Adjust height as needed -->
+        </a>
+        <h1>  ENHANCE Program</h1>
+    </div>
+
+    <div class="top_right">
         <span>Hello, {{ user.username }}   </span>
         <br>
         <span id="CurrentTime"></span>
@@ -24,36 +33,63 @@
     </div>
 
     <div class="top_right">
-        <a href="{% url 'project_management' %}" class="btn btn-secondary btn-sm">Project Management</a>
-        <br>
-        <a href="{% url 'user_management' %}" class="btn btn-secondary btn-sm">User Management</a>
+        <a href="{% url 'user_management' %}" class="btn btn-secondary btn-sm">Management</a>
         <br>
         <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Log out</a>
     </div>
 </div>
 
+<div class="sidebar">
+    <div class="todo-list-container">
+        <h2>
+            Todo List
+            <br>
+            <span id="timeDifference"></span>
+        </h2>
+        <ul class="list-group">
+            {% for project in incomplete_projects %}
+                <li class="list-group-item">
+                    {{ project.name }}
+                    <span>{{ project.status }}</span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="topic-selection-container">
+            <h2 id="topicSelectionHeader">Select a Topic </h2>
+            <select id="topicSelection" class="form-select">
+                <option value="">--Please choose a topic--</option>
+                <option value="Living with memory loss, community resources and care coordination">Living with memory loss, community resources and care coordination</option>
+                <option value="Progression of Alzheimer’s Disease and related dementias">Progression of Alzheimer’s Disease and related dementias</option>
+                <option value="Legal and financial planning">Legal and financial planning</option>
+                <option value="Managing independent activities of daily living (IADLs)">Managing independent activities of daily living (IADLs)</option>
+                <option value="Communication">Communication</option>
+                <option value="Driving safety">Driving safety</option>
+                <option value="Stress management">Stress management</option>
+                <option value="Managing activities of daily living (ADLs)">Managing activities of daily living (ADLs)</option>
+                <option value="Care recipient wandering">Care recipient wandering</option>
+                <option value="Care recipient aggression/repeated questioning">Care recipient aggression/repeated questioning</option>
+                <option value="Care recipient depression">Care recipient depression</option>
+                <option value="Caregiving transitions: legal issues, placement, hospice/end of life, bereavement">Caregiving transitions: legal issues, placement, hospice/end of life, bereavement</option>
+                <option value="Home safety">Home safety</option>
+            </select>
+            <button onclick="confirmTopic()" class="btn btn-primary">Confirm</button>
+        <div id="selectedTopicDisplay">
+        <span id="topicChoiceText"> </span>
+        <span id="selectedTopicText"></span>
+        </div>
 
-<div class="todo-list-container">
-    <h2>
-        Todo List
-        <br>
-        <span id="timeDifference"></span>
-    </h2>
-    <ul class="list-group">
-        {% for project in incomplete_projects %}
-            <li class="list-group-item">
-                {{ project.name }}
-                <span>{{ project.status }}</span>
-            </li>
-        {% endfor %}
-    </ul>
+     </div>
+</div>
+
+<div class="picture_container">
+    <img src="{% static 'image/pic1.png' %}" alt="Weill Cornell Medicine" height="10" />
 </div>
 
 <div class="week-container">
         <div class="week-arrow" onclick="scrollWeeks('left')">
             <i class="bi bi-arrow-left-circle"></i>
         </div>
-
         <div class="week-scroll">
             {% for week_number in weeks %}
         <div class="week">
@@ -72,7 +108,25 @@
         </div>
 </div>
 
+<script>
+function confirmTopic() {
+    var topicSelectElement = document.getElementById("topicSelection");
+    var selectedValue = topicSelectElement.value; // Get the value of the selected option
+    var selectedText = topicSelectElement.options[topicSelectElement.selectedIndex].text; // Get the text of the selected option
 
+    if (selectedValue) {
+        // Update the header to show the selected topic
+        document.getElementById("topicSelectionHeader").style.display = "none"; // Hide the header asking for selection
+        var selectedTopicDisplay = document.getElementById("selectedTopicDisplay");
+        selectedTopicDisplay.style.display = "block"; // Make the selected topic display visible
+        document.getElementById("selectedTopicText").textContent = selectedText; // Set the text content to the selected topic
+        topicSelectElement.style.display = 'none'; // Optionally hide the dropdown after selection
+        document.querySelector('.btn-primary').style.display = 'none'; // Hide the confirm button after selection
+    } else {
+        alert("Please select a topic before confirming."); // Alert if no topic is selected
+    }
+}
+</script>
 <script> Time() ; </script>
 <script> StartDate() ; </script>
 <script> calculateWeekDifference() ; </script>

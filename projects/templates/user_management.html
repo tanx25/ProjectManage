@@ -5,9 +5,14 @@
     <title>SEED-User Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/management.css' %}">
+    <link rel="stylesheet" href="{% static 'css/user_management.css' %}">
 </head>
 <body>
+<div class="logo-container">
+        <a href="{% url 'project_list' %}">
+            <img src="{% static 'image/logo2.png' %}" alt="Weill Cornell Medicine Logo" height="50" /> <!-- Adjust height as needed -->
+        </a>
+</div>
 <div class="header-links">
     <a href="{% url 'project_list' %}" class="btn btn-secondary btn-sm">Project</a>
     <a href="{% url 'project_management' %}" class="btn btn-secondary btn-sm">Project Management</a>

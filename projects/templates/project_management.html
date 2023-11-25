@@ -5,79 +5,83 @@
     <title>SEED-Project Management</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/management.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project_management.css' %}">
 </head>
-
-<div class="header-links">
-    <a href="{% url 'project_list' %}" class="btn btn-secondary btn-sm">Project</a>
-    <a href="{% url 'user_management' %}" class="btn btn-secondary btn-sm">User Management</a>
-    <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Log out</a>
-</div>
-
 <body>
-    <div class="container">
-        <h1>Project Management</h1>
-        <h2>Add New Project</h2>
-        <form method="post" class="form">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Add</button>
-        </form>
+    <div class="logo-container">
+        <a href="{% url 'project_list' %}">
+            <img src="{% static 'image/logo2.png' %}" alt="Weill Cornell Medicine Logo" height="50" /> <!-- Adjust height as needed -->
+        </a>
+    </div>
+    <div class="header-links">
+        <a href="{% url 'project_list' %}" class="btn btn-secondary btn-sm">Project</a>
+        <a href="{% url 'user_management' %}" class="btn btn-secondary btn-sm">Management</a>
+        <a href="{% url 'login' %}" class="btn btn-secondary btn-sm">Log out</a>
+    </div>
 
-        <div class="project-container">
-            <div class="row">
-                <div class="col-md-8">
-                    <h1>Project List</h1>
+
+    <div class="container">
+        <h1 class="my-4">Project Management</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <h2>Project List</h2>
+                <ul class="list-group">
                     {% for project in projects %}
-                        <div class="card mb-3">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h2 class="card-title">{{ project.name }}</h2>
-                                    <p class="card-text">{{ project.description }}</p>
-                                    <p>Status: {{ project.status }}</p>
-                                    <a href="{% url 'delete_project' project.id %}" class="btn btn-danger">Delete Project</a>
-                                    <h4>Steps:</h4>
-                                    <ul class="list-group">
-                                        {% for step in project.steps.all %}
-                                            <li class="list-group-item">
-                                                {{ step.name }} - Status: {{ step.status }}
-                                                <form method="post" action="{% url 'edit_step_status' step.id %}" class="form-inline">
-                                                    {% csrf_token %}
-                                                    <select name="status" class="form-control mr-2">
-                                                        <option value="Not Started" {% if step.status == "Not Started" %} selected {% endif %}>Not Started</option>
-                                                        <option value="In Progress" {% if step.status == "In Progress" %} selected {% endif %}>In Progress</option>
-                                                        <option value="Completed" {% if step.status == "Completed" %} selected {% endif %}>Completed</option>
-                                                    </select>
-                                                    <button type="submit" class="btn btn-sm btn-primary">Update Step Status</button>
-                                                </form>
-                                                <a href="{% url 'delete_step' step.id %}" class="btn btn-sm btn-danger">Delete Step</a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                    <form method="post" action="{% url 'add_step' project.id %}" class="form">
-                                        {% csrf_token %}
-                                        <div class="form-group">
-                                            <label for="step_name">Add Step:</label>
-                                            <input type="text" name="step_name" required class="form-control">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="step_status">Status:</label>
-                                            <select name="step_status" class="form-control">
-                                                <option value="Not Started">Not Started</option>
-                                                <option value="In Progress">In Progress</option>
-                                                <option value="Completed">Completed</option>
+                        <li class="list-group-item">
+                            <h3>{{ project.name }}</h3>
+                            <p>{{ project.description }}</p>
+                            <p>Status: {{ project.status }}</p>
+                            <a href="{% url 'delete_project' project.id %}" class="btn btn-danger btn-sm">Delete Project</a>
+                            <h4>Steps:</h4>
+                            <ul class="list-group">
+                                {% for step in project.steps.all %}
+                                    <li class="list-group-item">
+                                        {{ step.name }} - Status: {{ step.status }}
+                                        <form method="post" action="{% url 'edit_step_status' step.id %}" class="form-inline">
+                                            {% csrf_token %}
+                                            <select name="status" class="form-control mr-2">
+                                                <option value="Not Started" {% if step.status == "Not Started" %} selected {% endif %}>Not Started</option>
+                                                <option value="In Progress" {% if step.status == "In Progress" %} selected {% endif %}>In Progress</option>
+                                                <option value="Completed" {% if step.status == "Completed" %} selected {% endif %}>Completed</option>
                                             </select>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Add Step</button>
-                                    </form>
+                                            <button type="submit" class="btn btn-sm btn-primary">Update Step Status</button>
+                                        </form>
+                                        <a href="{% url 'delete_step' step.id %}" class="btn btn-sm btn-danger">Delete Step</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <form method="post" action="{% url 'add_step' project.id %}" class="form">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="step_name">Add Step:</label>
+                                    <input type="text" name="step_name" required class="form-control">
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="step_status">Status:</label>
+                                    <select name="step_status" class="form-control">
+                                        <option value="Not Started">Not Started</option>
+                                        <option value="In Progress">In Progress</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Add Step</button>
+                            </form>
+                        </li>
                     {% endfor %}
-                    </div>
-                </div>
+                </ul>
+            </div>
+
+
+            <div class="col-md-6">
+                <h2>Add New Project</h2>
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </form>
             </div>
         </div>
     </div>
-</body>
 
+</body>
 </html>

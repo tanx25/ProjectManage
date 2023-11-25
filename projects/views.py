@@ -59,20 +59,20 @@ def add_step(request, project_id):
         step = Step(name=name, status=status, project=project)
         step.save()
         project.update_status()
-        return redirect('project_list')
-    return redirect('project_list')
+        return redirect('project_management')
+    return redirect('project_management')
 
 
 def delete_project(request, pk):
     project = get_object_or_404(Project, pk=pk, user=request.user)
     project.delete()
-    return redirect('project_list')
+    return redirect('project_management')
 def delete_step(request, step_id):
     step = get_object_or_404(Step, id=step_id)
     project = step.project
     step.delete()
     project.update_status()
-    return redirect('project_list')
+    return redirect('project_management')
 
 
 def edit_project_status(request, pk):
