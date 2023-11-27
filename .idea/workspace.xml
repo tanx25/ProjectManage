@@ -7,6 +7,11 @@
     <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding Styles and WCM factors">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/project_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/project_management.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/projects/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/projects/project_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/registration/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/registration/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/registration/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/projects/templates/user_management.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/user_management.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +124,8 @@
       <workItem from="1700460467649" duration="4248000" />
       <workItem from="1700501160067" duration="15115000" />
       <workItem from="1700537771582" duration="4278000" />
-      <workItem from="1700763126140" duration="35850000" />
+      <workItem from="1700763126140" duration="37212000" />
+      <workItem from="1701124491917" duration="768000" />
     </task>
     <task id="LOCAL-00001" summary="Adding todo list and time counting , united styles">
       <option name="closed" value="true" />
@@ -185,7 +191,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700928397462</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Adding Styles and WCM factors">
+      <option name="closed" value="true" />
+      <created>1700928569352</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700928569352</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
