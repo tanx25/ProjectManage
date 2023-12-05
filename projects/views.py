@@ -161,7 +161,6 @@ def save_user_topics(request):
     if 0 < len(selected_topics) <= 4:
         user.notes = ', '.join(selected_topics)
         user.save()
-        messages.success(request, "Topic submitted successfully!")
     else:
         pass
     return redirect('project_list')
