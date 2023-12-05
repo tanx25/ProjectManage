@@ -43,10 +43,13 @@
     <div class="todo-list-container">
         <h2>
             Todo List
+            <button id="toggleTodoList" >
+                <i class="bi bi-arrows-expand" style="color: white; font-size: 0.8em;"></i>
+            </button>
             <br>
             <span id="timeDifference"></span>
         </h2>
-        <ul class="list-group">
+        <ul class="list-group" id="todoList">
             {% for project in incomplete_projects %}
                 <li class="list-group-item">
                     {{ project.name }}
@@ -57,7 +60,9 @@
     </div>
     <div class="topic-selection-container">
             <h2 id="topicSelectionHeader">Select a Topic </h2>
-            <select id="topicSelection" class="form-select">
+            <form method="post" action="{% url 'save_user_topics' %}">
+            {% csrf_token %}
+            <select id="topicSelection" name="topics" class="form-select">
                 <option value="">--Please choose a topic--</option>
                 <option value="Living with memory loss, community resources and care coordination">Living with memory loss, community resources and care coordination</option>
                 <option value="Progression of Alzheimer’s Disease and related dementias">Progression of Alzheimer’s Disease and related dementias</option>
@@ -125,13 +130,25 @@ function confirmTopic() {
         alert("Please select a topic before confirming.");
     }
 }
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('toggleTodoList').addEventListener('click', function() {
+        var todoList = document.getElementById('todoList');
+        var icon = this.querySelector('i');
+
+        if (todoList.style.display === 'none' || todoList.style.display === '') {
+            todoList.style.display = 'block';
+            icon.className = 'bi bi-arrows-collapse';
+        } else {
+            todoList.style.display = 'none';
+            icon.className = 'bi bi-arrows-expand';
+        }
+    });
+});
 </script>
 <script> Time() ; </script>
 <script> StartDate() ; </script>
 <script> calculateWeekDifference() ; </script>
 <script src="{% static 'js/project_list.js' %}"></script>
-
-
 
 
 </body>

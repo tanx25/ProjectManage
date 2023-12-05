@@ -9,6 +9,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
+from django.views.decorators.http import require_POST
 
 
 def login_view(request):
@@ -152,3 +153,15 @@ def delete_user(request, user_id):
 
 
 
+@login_required
+@require_POST
+def save_user_topics(request):
+    selected_topics = request.POST.getlist('topics')
+    user = request.user
+    if 0 < len(selected_topics) <= 4:
+        user.notes = ', '.join(selected_topics)
+        user.save()
+        messages.success(request, "Topic submitted successfully!")
+    else:
+        pass
+    return redirect('project_list')
