@@ -1,0 +1,226 @@
+ body {
+            font-family: 'Arial', sans-serif;
+            background-color: #B31B1B;
+            color: white;
+            margin: 0;
+            padding: 20px;
+        }
+
+ .top_navi {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: #B31B1B;
+            border-radius: 8px;
+            color: white;
+        }
+ .top_left, .top_right {
+            padding: 30px;
+        }
+
+ .top_navi a {
+    color: #CF4520;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    border: 1px solid #CF4520;
+}
+
+
+.top_navi a:hover {
+    background-color: #E7751D;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+ .todo-list-container {
+    background-color: #CF4520;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+     max-height: 250px;
+    overflow-y: auto;
+     display: block;
+}
+
+ .project-container {
+            background-color: #CF4520;
+            border: 1px solid white;
+            border-radius: .25rem;
+            box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+ .card {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+ .list-group-item {
+            background-color: white;
+            margin-bottom: 5px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+ .btn, .form-control, .form-group {
+            margin-top: 10px;
+        }
+ .btn-primary {
+     background-color: white;
+     color: #CF4520;
+     border: none;
+        }
+ .btn-danger {
+            background-color: #333;
+        }
+.week-container {
+    background-color: #E7751D;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+ .week-scroll {
+     display: flex;
+     flex-wrap: nowrap;
+     width: 100%;
+     overflow-x: hidden;
+     scroll-behavior: smooth;
+}
+ .week-arrow {
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            margin: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+ .week-arrow:hover {
+            color: white;
+            text-shadow: 0 0 8px rgba(0,123,255,0.5);
+        }
+
+
+.week {
+    flex: none;
+    width: 25%;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background-color: #CF4520;
+    transition: transform 0.3s ease;
+}
+ .week:last-child {
+    margin-right: 0;
+}
+
+ .sidebar {
+     background-color: #E7751D;
+     border-radius: 10px;
+     padding: 20px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     margin-bottom: 20px;
+     width: 35%;
+     float: left;
+     max-height: 500px;
+     overflow-y: auto;
+}
+
+.topic-selection-container {
+    background-color: #CF4520;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+
+.main-content {
+    margin-left: 35%;
+    background-color: #CF4520;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+
+    .sidebar, .main-content, .week-container {
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+    }
+
+    .week-container {
+        padding: 10px;
+        border-radius: 0;
+        flex-direction: column;
+    }
+
+    .week {
+        margin: 10px 0;
+    }
+
+    .week-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .week-arrow:first-of-type {
+        left: 10px;
+    }
+
+    .week-arrow:last-of-type {
+        right: 10px;
+    }
+}
+.picture_container {
+    background-color: #E7751D;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: calc(65% - 10px);
+    overflow: hidden;
+}
+
+.picture_container img {
+    width: 75%;
+    height: 420px;
+    display: block;
+}
+
+#toggleTodoList {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+#toggleTodoList i {
+    color: white;
+    font-size: 1em;
+}
+
