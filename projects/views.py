@@ -161,6 +161,7 @@ def save_user_topics(request):
     if 0 < len(selected_topics) <= 4:
         user.notes = ', '.join(selected_topics)
         user.save()
+        messages.success(request, "Topics updated successfully!")
     else:
-        pass
+        messages.error(request, "You can select up to 4 topics.")
     return redirect('project_list')

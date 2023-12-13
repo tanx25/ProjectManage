@@ -59,32 +59,27 @@
         </ul>
     </div>
     <div class="topic-selection-container">
-            <h2 id="topicSelectionHeader">Select a Topic </h2>
-            <form method="post" action="{% url 'save_user_topics' %}">
-            {% csrf_token %}
-            <select id="topicSelection" name="topics" class="form-select">
-                <option value="">--Please choose a topic--</option>
-                <option value="Living with memory loss, community resources and care coordination">Living with memory loss, community resources and care coordination</option>
-                <option value="Progression of Alzheimer’s Disease and related dementias">Progression of Alzheimer’s Disease and related dementias</option>
-                <option value="Legal and financial planning">Legal and financial planning</option>
-                <option value="Managing independent activities of daily living (IADLs)">Managing independent activities of daily living (IADLs)</option>
-                <option value="Communication">Communication</option>
-                <option value="Driving safety">Driving safety</option>
-                <option value="Stress management">Stress management</option>
-                <option value="Managing activities of daily living (ADLs)">Managing activities of daily living (ADLs)</option>
-                <option value="Care recipient wandering">Care recipient wandering</option>
-                <option value="Care recipient aggression/repeated questioning">Care recipient aggression/repeated questioning</option>
-                <option value="Care recipient depression">Care recipient depression</option>
-                <option value="Caregiving transitions: legal issues, placement, hospice/end of life, bereavement">Caregiving transitions: legal issues, placement, hospice/end of life, bereavement</option>
-                <option value="Home safety">Home safety</option>
-            </select>
-            <button onclick="confirmTopic()" class="btn btn-primary">Confirm</button>
-        <div id="selectedTopicDisplay">
-        <span id="topicChoiceText"> </span>
-        <span id="selectedTopicText"></span>
+    <h2 id="topicSelectionHeader">Select a Topic</h2>
+    <form method="post" action="{% url 'save_user_topics' %}">
+        {% csrf_token %}
+        <div id="topicSelection">
+            <label><input type="checkbox" name="topics" value="Living with memory loss, community resources and care coordination"> Living with memory loss, community resources and care coordination</label><br>
+            <label><input type="checkbox" name="topics" value="Progression of Alzheimer’s Disease and related dementias"> Progression of Alzheimer’s Disease and related dementias</label><br>
+            <label><input type="checkbox" name="topics" value="Legal and financial planning"> Legal and financial planning</label><br>
+            <label><input type="checkbox" name="topics" value="Managing independent activities of daily living (IADLs)"> Managing independent activities of daily living (IADLs)</label><br>
+            <label><input type="checkbox" name="topics" value="Communication"> Communication</label><br>
+            <label><input type="checkbox" name="topics" value="Driving safety"> Driving safety</label><br>
+            <label><input type="checkbox" name="topics" value="Stress management"> Stress management</label><br>
+            <label><input type="checkbox" name="topics" value="Managing activities of daily living (ADLs)"> Managing activities of daily living (ADLs)</label><br>
+            <label><input type="checkbox" name="topics" value="Care recipient wandering"> Care recipient wandering</label><br>
+            <label><input type="checkbox" name="topics" value="Care recipient aggression/repeated questioning"> Care recipient aggression/repeated questioning</label><br>
+            <label><input type="checkbox" name="topics" value="Care recipient depression"> Care recipient depression</label><br>
+            <label><input type="checkbox" name="topics" value="Caregiving transitions: legal issues, placement, hospice/end of life, bereavement"> Caregiving transitions: legal issues, placement, hospice/end of life, bereavement</label><br>
+            <label><input type="checkbox" name="topics" value="Home safety"> Home safety</label><br>
         </div>
-            </form>
-     </div>
+        <button type="submit" class="btn btn-primary">Confirm</button>
+    </form>
+</div>
 </div>
 
 <div class="picture_container">
@@ -112,6 +107,15 @@
             <i class="bi bi-arrow-right-circle"></i>
         </div>
 </div>
+{% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            <div class="{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+{% endif %}
 
 <script>
 function confirmTopic() {
@@ -131,19 +135,18 @@ function confirmTopic() {
     }
 }
 document.addEventListener('DOMContentLoaded', function() {
-    document.getElementById('toggleTodoList').addEventListener('click', function() {
-        var todoList = document.getElementById('todoList');
-        var icon = this.querySelector('i');
-
-        if (todoList.style.display === 'none' || todoList.style.display === '') {
-            todoList.style.display = 'block';
-            icon.className = 'bi bi-arrows-collapse';
-        } else {
-            todoList.style.display = 'none';
-            icon.className = 'bi bi-arrows-expand';
-        }
+    var checkboxes = document.querySelectorAll('#topicSelection input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            var checkedBoxes = document.querySelectorAll('#topicSelection input[type="checkbox"]:checked');
+            if (checkedBoxes.length > 4) {
+                alert('You can select up to 4 topics.');
+                checkbox.checked = false;
+            }
+        });
     });
 });
+
 </script>
 <script> Time() ; </script>
 <script> StartDate() ; </script>
