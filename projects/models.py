@@ -67,7 +67,7 @@ class CustomUser(AbstractUser):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     study_id = models.CharField(max_length=50)
     condition = models.TextField()
-    notes = models.TextField()
+    Topic = models.TextField()
 
 
 
