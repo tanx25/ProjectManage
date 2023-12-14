@@ -37,6 +37,22 @@ def login_view(request):
 
 @login_required
 def project_list(request):
+    topic_options = [
+        "Living with memory loss, community resources and care coordination",
+        "Progression of Alzheimer’s Disease and related dementias",
+        "Legal and financial planning",
+        "Managing independent activities of daily living (IADLs)",
+        "Communication",
+        "Driving safety",
+        "Stress management",
+        "Managing activities of daily living (ADLs)",
+        "Care recipient wandering",
+        "Care recipient aggression/repeated questioning",
+        "Care recipient depression",
+        "Caregiving transitions: legal issues, placement, hospice/end of life, bereavement",
+        "Home safety"
+    ]
+    user_selected_topics = request.user.Topic.split(', ') if request.user.Topic else []
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
@@ -47,10 +63,21 @@ def project_list(request):
             return redirect('project_list')
     else:
         form = ProjectForm()
+
     projects = Project.objects.filter(user=request.user)
-    #projects = Project.objects.all()
     incomplete_projects = Project.objects.filter(user=request.user, status__in=["Not Started", "Incompleted"])
-    return render(request, 'projects/project_list.html', {'projects': projects, 'form': form, 'incomplete_projects': incomplete_projects, 'weeks': range(1, 11)})
+
+
+    context = {
+        'form': form,
+        'projects': projects,
+        'incomplete_projects': incomplete_projects,
+        'topic_options': topic_options,
+        'user_selected_topics': user_selected_topics,
+        'weeks': range(1, 11)
+    }
+
+    return render(request, 'projects/project_list.html', context)
 
 def add_step(request, project_id):
     project = get_object_or_404(Project, id=project_id)
@@ -158,10 +185,7 @@ def delete_user(request, user_id):
 def save_user_topics(request):
     selected_topics = request.POST.getlist('topics')
     user = request.user
-    if 0 < len(selected_topics) <= 4:
-        user.notes = ', '.join(selected_topics)
-        user.save()
-        messages.success(request, "Topics updated successfully!")
-    else:
-        messages.error(request, "You can select up to 4 topics.")
+    user.Topic = ', '.join(selected_topics) if selected_topics else ''
+    user.save()
+    messages.success(request, "Topics updated successfully!")
     return redirect('project_list')

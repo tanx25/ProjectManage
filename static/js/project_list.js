@@ -38,14 +38,4 @@ function calculateWeekDifference() {
         container.scrollLeft += scrollAmount;
     }
 }
-function confirmTopic() {
-    var topicSelectElement = document.getElementById("topicSelection");
-    var selectedValue = topicSelectElement.options[topicSelectElement.selectedIndex].text;
-    var selectedTopicText = document.getElementById("selectedTopicText");
 
-    if(selectedValue !== "" && selectedValue !== "--Please choose a topic--") {
-        selectedTopicText.textContent = `The topic you chose: ${selectedValue}`;
-    } else {
-        alert("Please select a topic before confirming.");
-    }
-}

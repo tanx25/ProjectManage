@@ -41,6 +41,7 @@
 
 <div class="sidebar">
     <div class="todo-list-container">
+        <div class="sticky-header">
         <h2>
             Todo List
             <button id="toggleTodoList" >
@@ -49,6 +50,7 @@
             <br>
             <span id="timeDifference"></span>
         </h2>
+        </div>
         <ul class="list-group" id="todoList">
             {% for project in incomplete_projects %}
                 <li class="list-group-item">
@@ -59,25 +61,32 @@
         </ul>
     </div>
     <div class="topic-selection-container">
-    <h2 id="topicSelectionHeader">Select a Topic</h2>
+        <div class="sticky-header">
+            <h2 id="topicSelectionHeader">Select a Topic</h2>
+        </div>
     <form method="post" action="{% url 'save_user_topics' %}">
         {% csrf_token %}
-        <div id="topicSelection">
-            <label><input type="checkbox" name="topics" value="Living with memory loss, community resources and care coordination"> Living with memory loss, community resources and care coordination</label><br>
-            <label><input type="checkbox" name="topics" value="Progression of Alzheimer’s Disease and related dementias"> Progression of Alzheimer’s Disease and related dementias</label><br>
-            <label><input type="checkbox" name="topics" value="Legal and financial planning"> Legal and financial planning</label><br>
-            <label><input type="checkbox" name="topics" value="Managing independent activities of daily living (IADLs)"> Managing independent activities of daily living (IADLs)</label><br>
-            <label><input type="checkbox" name="topics" value="Communication"> Communication</label><br>
-            <label><input type="checkbox" name="topics" value="Driving safety"> Driving safety</label><br>
-            <label><input type="checkbox" name="topics" value="Stress management"> Stress management</label><br>
-            <label><input type="checkbox" name="topics" value="Managing activities of daily living (ADLs)"> Managing activities of daily living (ADLs)</label><br>
-            <label><input type="checkbox" name="topics" value="Care recipient wandering"> Care recipient wandering</label><br>
-            <label><input type="checkbox" name="topics" value="Care recipient aggression/repeated questioning"> Care recipient aggression/repeated questioning</label><br>
-            <label><input type="checkbox" name="topics" value="Care recipient depression"> Care recipient depression</label><br>
-            <label><input type="checkbox" name="topics" value="Caregiving transitions: legal issues, placement, hospice/end of life, bereavement"> Caregiving transitions: legal issues, placement, hospice/end of life, bereavement</label><br>
-            <label><input type="checkbox" name="topics" value="Home safety"> Home safety</label><br>
-        </div>
+       <div id="topicSelection">
+           {% for topic_option in topic_options %}
+               <label>
+            <input type="checkbox" name="topics" value="{{ topic_option }}"
+                   {% if topic_option in user_selected_topics %}checked{% endif %}>
+                   {{ topic_option }}
+               </label><br>
+           {% endfor %}
+       </div>
         <button type="submit" class="btn btn-primary">Confirm</button>
+        <button type="button" class="btn btn-secondary" id="clearAllTopics">Clear All</button>
+        <button type="submit" id="hiddenSubmit" style="display: none;"></button>
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+{% endif %}
     </form>
 </div>
 </div>
@@ -107,15 +116,7 @@
             <i class="bi bi-arrow-right-circle"></i>
         </div>
 </div>
-{% if messages %}
-    <div class="messages">
-        {% for message in messages %}
-            <div class="{{ message.tags }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
+
 
 <script>
 function confirmTopic() {
@@ -145,8 +146,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    document.getElementById('clearAllTopics').addEventListener('click', function() {
+    var checkboxes = document.querySelectorAll('#topicSelection input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+        checkbox.checked = false;
+    });
+    document.getElementById('hiddenSubmit').click();
 });
-
+});
 </script>
 <script> Time() ; </script>
 <script> StartDate() ; </script>

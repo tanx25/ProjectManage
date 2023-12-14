@@ -66,8 +66,8 @@ class CustomUser(AbstractUser):
     address = models.CharField(max_length=255)
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     study_id = models.CharField(max_length=50)
-    condition = models.TextField()
-    Topic = models.TextField()
+    condition = models.TextField(null=True)
+    Topic = models.TextField(null=True)
 
 
 
