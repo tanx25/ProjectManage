@@ -13,7 +13,7 @@
 </head>
 
 <body>
-
+<div id="userStartDate" data-start-date="{{ user.start_date }}" style="display: none;"></div>
 <div class="top_navi">
     <div class="logo-container">
         <a href="{% url 'project_list' %}">
@@ -27,9 +27,9 @@
         <br>
         <span id="CurrentTime"></span>
         <br>
-         <span id="start_date">Selected Start Date:</span>
+         <!--<span id="start_date">Selected Start Date:</span>
         <input type="date" id="startDateChoose">
-        <button onclick="StartDate(); calculateWeekDifference()">Confirm</button>
+        <button onclick="StartDate(); calculateWeekDifference()">Confirm</button>!-->
     </div>
 
     <div class="top_right">
@@ -116,6 +116,7 @@
             <i class="bi bi-arrow-right-circle"></i>
         </div>
 </div>
+
 
 
 <script>

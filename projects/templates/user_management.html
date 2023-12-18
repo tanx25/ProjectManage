@@ -34,8 +34,9 @@
             <th>Study id</th>
             <th>Email</th>
             <th>Address</th>
-            <th>Condition</th>
+            <th>Start Date</th>
             <th>Topic</th>
+            <th>Change Start Date</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -47,9 +48,16 @@
                 <td>{{ user.study_id }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.address }}</td>
-                <td>{{ user.condition }}</td>
+                <td>{{ user.start_date }}</td>
                 <td>{{ user.Topic }}</td>
 
+                <td>
+                    <form method="post" action="{% url 'update_user_start_date' user.id %}">
+                        {% csrf_token %}
+                        <input type="date" name="start_date" value="{{ user.start_date|date:'Y-m-d' }}">
+                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                    </form>
+                </td>
                 <td>
                     <a href="{% url 'delete_user' user.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
                 </td>

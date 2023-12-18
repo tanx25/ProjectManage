@@ -24,12 +24,12 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = get_user_model()
         #model = CustomUser
-        fields = UserCreationForm.Meta.fields + ('email', 'address', 'gender', 'study_id', 'condition', 'Topic')
+        fields = UserCreationForm.Meta.fields + ('email', 'address', 'gender', 'study_id', 'start_date', 'Topic')
 
 class CustomUserForm(forms.ModelForm):
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'address', 'gender', 'study_id', 'condition', 'Topic']
+        fields = ['username', 'email', 'address', 'gender', 'study_id', 'start_date', 'Topic']
 
 
 

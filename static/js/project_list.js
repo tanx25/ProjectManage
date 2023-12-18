@@ -14,6 +14,9 @@ var selectedStartDate;
 
 function calculateWeekDifference() {
     var timeDifference = document.getElementById('timeDifference');
+    var userStartDateElement = document.getElementById('userStartDate');
+    var selectedStartDate = userStartDateElement ? userStartDateElement.dataset.startDate : null;
+
     if (selectedStartDate) {
         var startDate = new Date(selectedStartDate);
         var now = new Date();
@@ -26,7 +29,7 @@ function calculateWeekDifference() {
             timeDifference.innerText = "Week " + differenceInWeeks;
         }
     } else {
-        timeDifference.innerText = "";
+        timeDifference.innerText = "Select a Start Date";
     }
 }
  function scrollWeeks(direction) {
@@ -39,3 +42,4 @@ function calculateWeekDifference() {
     }
 }
 
+calculateWeekDifference();

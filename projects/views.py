@@ -53,6 +53,7 @@ def project_list(request):
         "Home safety"
     ]
     user_selected_topics = request.user.Topic.split(', ') if request.user.Topic else []
+
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
@@ -74,7 +75,8 @@ def project_list(request):
         'incomplete_projects': incomplete_projects,
         'topic_options': topic_options,
         'user_selected_topics': user_selected_topics,
-        'weeks': range(1, 11)
+        'weeks': range(1, 11),
+        'user_start_date': request.user.start_date
     }
 
     return render(request, 'projects/project_list.html', context)
@@ -179,7 +181,6 @@ def delete_user(request, user_id):
     return redirect('user_management')
 
 
-
 @login_required
 @require_POST
 def save_user_topics(request):
@@ -189,3 +190,12 @@ def save_user_topics(request):
     user.save()
     messages.success(request, "Topics updated successfully!")
     return redirect('project_list')
+
+@login_required
+def update_user_start_date(request, user_id):
+    if request.method == 'POST':
+        user = get_object_or_404(CustomUser, pk=user_id)
+        user.start_date = request.POST.get('start_date')
+        user.save()
+        messages.success(request, "Start date updated successfully!")
+    return redirect('user_management')
