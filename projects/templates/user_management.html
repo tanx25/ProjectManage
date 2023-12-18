@@ -55,7 +55,7 @@
                     <form method="post" action="{% url 'update_user_start_date' user.id %}">
                         {% csrf_token %}
                         <input type="date" name="start_date" value="{{ user.start_date|date:'Y-m-d' }}">
-                        <button type="submit" class="btn btn-primary btn-sm">Update</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Update</button>
                     </form>
                 </td>
                 <td>

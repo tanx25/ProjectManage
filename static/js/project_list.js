@@ -5,12 +5,8 @@
         setInterval(Time, 1000);
 
 
-function StartDate() {
-    selectedStartDate = document.getElementById('startDateChoose').value;
-    document.getElementById('start_date').innerText = 'Start Date: ' + selectedStartDate;
-    calculateWeekDifference();
-}
-var selectedStartDate;
+
+
 
 function calculateWeekDifference() {
     var timeDifference = document.getElementById('timeDifference');

@@ -20,16 +20,10 @@
             <img src="{% static 'image/logo.png' %}" alt="Weill Cornell Medicine Logo" height="70" />
         </a>
         <h1>  ENHANCE Program</h1>
-    </div>
-
-    <div class="top_right">
-        <span>Hello, {{ user.username }}   </span>
+        <span>Hello, {{ user.username }}</span>
         <br>
         <span id="CurrentTime"></span>
         <br>
-         <!--<span id="start_date">Selected Start Date:</span>
-        <input type="date" id="startDateChoose">
-        <button onclick="StartDate(); calculateWeekDifference()">Confirm</button>!-->
     </div>
 
     <div class="top_right">
@@ -157,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 <script> Time() ; </script>
-<script> StartDate() ; </script>
 <script> calculateWeekDifference() ; </script>
 <script src="{% static 'js/project_list.js' %}"></script>
 

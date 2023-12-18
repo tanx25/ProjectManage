@@ -10,6 +10,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
+from datetime import datetime, timedelta
 
 
 def login_view(request):
@@ -65,8 +66,18 @@ def project_list(request):
     else:
         form = ProjectForm()
 
+    if request.user.start_date:
+        delta = datetime.now().date() - request.user.start_date
+        current_week = delta.days // 7 + 1
+    else:
+        current_week = 1
+    incomplete_projects = Project.objects.filter(
+        user=request.user,
+        status__in=["Not Started", "Incompleted"],
+        week=current_week
+    )
     projects = Project.objects.filter(user=request.user)
-    incomplete_projects = Project.objects.filter(user=request.user, status__in=["Not Started", "Incompleted"])
+
 
 
     context = {
@@ -197,5 +208,5 @@ def update_user_start_date(request, user_id):
         user = get_object_or_404(CustomUser, pk=user_id)
         user.start_date = request.POST.get('start_date')
         user.save()
-        messages.success(request, "Start date updated successfully!")
+        #messages.success(request, "Start date updated successfully!")
     return redirect('user_management')
