@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Update topic" />
+    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Update topic selections">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -260,7 +263,9 @@
     <MESSAGE value="Adding Styles and WCM factors" />
     <MESSAGE value="Adding topic selection and update todo list" />
     <MESSAGE value="Update topic selection checkbox, allow user select up to four topics" />
+    <MESSAGE value="Update topic selection and title" />
     <MESSAGE value="Update topic" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update topic" />
+    <MESSAGE value="Update topic selections" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update topic selections" />
   </component>
 </project>
