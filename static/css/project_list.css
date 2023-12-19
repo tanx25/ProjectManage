@@ -9,6 +9,7 @@
  .top_navi {
             display: flex;
             justify-content: space-between;
+            align-items: center;
             margin-bottom: 20px;
             background-color: #B31B1B;
             border-radius: 8px;
@@ -17,7 +18,10 @@
  .top_left, .top_right {
             padding: 30px;
         }
-
+.title-container {
+    flex-grow: 1;
+    text-align: center;
+}
  .top_navi a {
     color: #CF4520;
     padding: 5px 10px;

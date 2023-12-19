@@ -18,7 +18,7 @@ class StepForm(forms.ModelForm):
 
 class CustomUserCreationForm(UserCreationForm):
     gender = forms.ChoiceField(choices=CustomUser.GENDER_CHOICES)
-    condition = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
+    #condition = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
     Topic = forms.CharField(widget=forms.Textarea(attrs={'rows': 3, 'cols': 30}))
 
     class Meta:
