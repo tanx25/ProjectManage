@@ -68,8 +68,8 @@
        <div id="topicSelection">
            {% for topic_option in topic_options %}
                <label>
-            <input type="checkbox" name="topics" value="{{ topic_option }}"
-                   {% if topic_option in user_selected_topics %}checked{% endif %}>
+                   <input type="checkbox" name="topics" value="{{ topic_option }}"
+                          {% if topic_option in user_selected_topics %}checked{% endif %}>
                    {{ topic_option }}
                </label><br>
            {% endfor %}
@@ -85,9 +85,9 @@
                     </div>
                 {% endfor %}
             </div>
-{% endif %}
+        {% endif %}
     </form>
-</div>
+    </div>
 </div>
 
 <div class="picture_container">
@@ -119,24 +119,8 @@
 
 
 <script>
-function confirmTopic() {
-    var topicSelectElement = document.getElementById("topicSelection");
-    var selectedValue = topicSelectElement.value;
-    var selectedText = topicSelectElement.options[topicSelectElement.selectedIndex].text;
-
-    if (selectedValue) {
-        document.getElementById("topicSelectionHeader").style.display = "none";
-        var selectedTopicDisplay = document.getElementById("selectedTopicDisplay");
-        selectedTopicDisplay.style.display = "block";
-        document.getElementById("selectedTopicText").textContent = selectedText;
-        topicSelectElement.style.display = 'none';
-        document.querySelector('.btn-primary').style.display = 'none';
-    } else {
-        alert("Please select a topic before confirming.");
-    }
-}
-document.addEventListener('DOMContentLoaded', function() {
-    var checkboxes = document.querySelectorAll('#topicSelection input[type="checkbox"]');
+    document.addEventListener('DOMContentLoaded', function() {
+        var checkboxes = document.querySelectorAll('#topicSelection input[type="checkbox"]');
     checkboxes.forEach(function(checkbox) {
         checkbox.addEventListener('change', function() {
             var checkedBoxes = document.querySelectorAll('#topicSelection input[type="checkbox"]:checked');
@@ -153,7 +137,39 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     document.getElementById('hiddenSubmit').click();
 });
-});
+
+        var userStartDate = document.getElementById('userStartDate').dataset.startDate;
+        var currentWeek = 1;
+        if (userStartDate) {
+            var startDate = new Date(userStartDate);
+            var now = new Date();
+            var differenceInDays = Math.ceil((now - startDate) / (1000 * 3600 * 24));
+            currentWeek = Math.ceil(differenceInDays / 7);
+        }
+
+        var isSelectionAllowed = (currentWeek === 1 || currentWeek === 2);
+        var checkboxes = document.querySelectorAll('#topicSelection input[type="checkbox"]');
+
+        checkboxes.forEach(function(checkbox) {
+            checkbox.disabled = !isSelectionAllowed;
+        });
+
+        var form = document.querySelector("#topicSelectionHeader + form");
+        var clearAllButton = document.getElementById('clearAllTopics');
+
+
+        form.addEventListener('submit', preventInvalidSelection);
+        clearAllButton.addEventListener('click', preventInvalidSelection);
+
+        function preventInvalidSelection(event) {
+            if (!isSelectionAllowed) {
+                event.preventDefault();
+                alert("Topic Selection is not allowed at this time, please contact manager");
+            }
+        }
+    });
+
+
 </script>
 <script> Time() ; </script>
 <script> calculateWeekDifference() ; </script>

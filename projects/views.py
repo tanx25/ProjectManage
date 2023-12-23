@@ -53,7 +53,8 @@ def project_list(request):
         "Caregiving transitions: legal issues, placement, hospice/end of life, bereavement",
         "Home safety"
     ]
-    user_selected_topics = request.user.Topic.split(', ') if request.user.Topic else []
+    user_selected_topics = request.user.Topic.split('; ') if request.user.Topic else []
+
 
     if request.method == 'POST':
         form = ProjectForm(request.POST)
@@ -71,6 +72,7 @@ def project_list(request):
         current_week = delta.days // 7 + 1
     else:
         current_week = 1
+
     incomplete_projects = Project.objects.filter(
         user=request.user,
         status__in=["Not Started", "Incompleted"],
@@ -195,9 +197,16 @@ def delete_user(request, user_id):
 @login_required
 @require_POST
 def save_user_topics(request):
-    selected_topics = request.POST.getlist('topics')
     user = request.user
-    user.Topic = ', '.join(selected_topics) if selected_topics else ''
+    if user.start_date:
+        delta = datetime.now().date() - user.start_date
+        current_week = delta.days // 7 + 1
+        if current_week not in [1, 2]:
+            messages.error(request, "Topic Selection is not allowed at this time, please contact manager")
+            return redirect('project_list')
+
+    selected_topics = request.POST.getlist('topics')
+    user.Topic = '; '.join(selected_topics) if selected_topics else ''
     user.save()
     messages.success(request, "Topics updated successfully!")
     return redirect('project_list')
