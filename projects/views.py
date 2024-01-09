@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from .models import Project, CustomUser,Step
 from .forms import ProjectForm, CustomUserForm
@@ -11,6 +12,7 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.views.decorators.http import require_POST
 from datetime import datetime, timedelta
+from django.views.decorators.csrf import csrf_exempt
 
 
 def login_view(request):
@@ -219,3 +221,5 @@ def update_user_start_date(request, user_id):
         user.save()
         #messages.success(request, "Start date updated successfully!")
     return redirect('user_management')
+
+

@@ -233,3 +233,21 @@
     background: inherit;
     z-index: 10;
 }
+
+.stream-now-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #E7751D;
+    color: white;
+    border-radius: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.stream-now-btn:hover, .stream-now-btn:focus {
+    background-color:#CF4520;
+    color: white;
+    text-decoration: none;
+}

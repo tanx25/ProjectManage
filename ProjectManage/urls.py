@@ -42,6 +42,7 @@ urlpatterns = [
     path('update_user_start_date/<int:user_id>/', views.update_user_start_date, name='update_user_start_date'),
 
 
+
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
