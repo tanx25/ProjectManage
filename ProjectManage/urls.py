@@ -40,7 +40,9 @@ urlpatterns = [
     path('delete_user/<int:user_id>/', views.delete_user, name='delete_user'),
     path('save_user_topics/', views.save_user_topics, name='save_user_topics'),
     path('update_user_start_date/<int:user_id>/', views.update_user_start_date, name='update_user_start_date'),
-
+    #path('project/update_status/<int:project_id>/<str:new_status>/', views.update_project_status, name='update_project_status'),
+    #path('update_project_status/<int:pk>/<str:status>/', views.update_project_status, name='update_project_status'),
+    path('update_project_status/<int:project_id>/<str:new_status>/', views.update_project_status, name='update_project_status'),
 
 
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

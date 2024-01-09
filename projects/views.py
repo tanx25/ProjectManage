@@ -223,3 +223,10 @@ def update_user_start_date(request, user_id):
     return redirect('user_management')
 
 
+@login_required
+@require_POST
+def update_project_status(request, project_id, new_status):
+    project = get_object_or_404(Project, pk=project_id, user=request.user)
+    project.status = new_status
+    project.save()
+    return JsonResponse({'status': 'success'})

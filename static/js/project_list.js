@@ -38,6 +38,58 @@ function calculateWeekDifference() {
     }
 }
 
+function updateProjectStatus(projectId, newStatus) {
+    fetch(`/update_project_status/${projectId}/${newStatus}/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+        if (data.status == 'success') {
+            document.querySelector(`#projectStatus${projectId}`).innerText = newStatus;
+        }
+    });
+}
 
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+
+var youtubePlayers = {};
+
+function onYouTubeIframeAPIReady() {
+    var youtubeIframes = document.querySelectorAll('iframe[id^="youtubePlayer"]');
+    youtubeIframes.forEach(function(iframe) {
+        var projectId = iframe.id.replace('youtubePlayer', '');
+        youtubePlayers[projectId] = new YT.Player(iframe.id, {
+            events: {
+                'onStateChange': function(event) {
+                    console.log("Player State Changed", event.data);
+                    if (event.data == YT.PlayerState.ENDED) {
+                        console.log("Video Ended for Project ID:", projectId);
+                        updateProjectStatus(projectId, 'Completed');
+                    }
+                }
+            }
+        });
+    });
+}
 
 calculateWeekDifference();

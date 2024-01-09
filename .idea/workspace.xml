@@ -4,13 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding videos and clickable todo list">
+    <list default="true" id="c934b3f7-1aff-444c-bc25-a9711367ff96" name="Changes" comment="Adding videos memorizing functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectManage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectManage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/templates/projects/project_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/projects/templates/projects/project_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projects/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/projects/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/project_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/project_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/js/project_list.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/project_list.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +141,7 @@
       <workItem from="1702960976086" duration="3182000" />
       <workItem from="1703111435288" duration="4833000" />
       <workItem from="1703299968245" duration="6373000" />
-      <workItem from="1704403618004" duration="10523000" />
+      <workItem from="1704403618004" duration="21365000" />
     </task>
     <task id="LOCAL-00001" summary="Adding todo list and time counting , united styles">
       <option name="closed" value="true" />
@@ -302,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703439493855</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Adding videos memorizing functions">
+      <option name="closed" value="true" />
+      <created>1704775977314</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1704775977314</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -338,6 +347,7 @@
     <MESSAGE value="Update title" />
     <MESSAGE value="Adding time factor to topic selection container" />
     <MESSAGE value="Adding videos and clickable todo list" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding videos and clickable todo list" />
+    <MESSAGE value="Adding videos memorizing functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding videos memorizing functions" />
   </component>
 </project>

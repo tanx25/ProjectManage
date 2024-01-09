@@ -234,7 +234,7 @@
     z-index: 10;
 }
 
-.stream-now-btn {
+.todovideo-btn {
     display: inline-block;
     padding: 10px 20px;
     background-color: #E7751D;
@@ -246,8 +246,21 @@
     transition: background-color 0.3s ease;
 }
 
-.stream-now-btn:hover, .stream-now-btn:focus {
+.todovideo-btn:hover, .todovideo-btn:focus {
     background-color:#CF4520;
     color: white;
     text-decoration: none;
+}
+.week-scroll a {
+    color: white;
+    text-decoration: none;
+}
+
+.week-scroll a:hover {
+    color: lightgray;
+}
+
+.week-header {
+    font-size: 1.2em;
+    font-family: 'Roboto', sans-serif;
 }
